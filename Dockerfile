@@ -1,11 +1,11 @@
 # Stage 1: Build
-FROM golang:1.21 AS builder
+FROM golang:1.23-alpine AS builder
 
 # Set the Current Working Directory
 WORKDIR /app
 
 # Copy go.mod and go.sum to the workspace
-COPY go.mod ./
+COPY go.mod go.sum ./
 
 # Download dependencies
 RUN go mod download
@@ -30,3 +30,4 @@ EXPOSE 8080
 
 # Command to run the executable
 CMD ["./ecs"]
+
